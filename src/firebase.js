@@ -13,7 +13,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-window.firebase = firebase;
+window.firebase = firebase;                         // don't do this in your project
 
 export const firestore = firebase.firestore();
 
