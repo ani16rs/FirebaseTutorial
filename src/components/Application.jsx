@@ -16,7 +16,7 @@ class Application extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount = async () => {
-    // // const posts = firestore.collection('posts').get().then(snapshot => { console.log({ snapshot });});
+    // const posts = firestore.collection('posts').get().then(snapshot => { console.log({ snapshot });});
     // const snapshot = await firestore.collection('posts').get();
 
     // const posts = snapshot.docs.map(collectIdsAndDocs);
@@ -27,7 +27,7 @@ class Application extends Component {
       this.setState({ posts });
 
       this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-        console.log(user)
+        // console.log(user)
         this.setState({ user });
       });
     })
