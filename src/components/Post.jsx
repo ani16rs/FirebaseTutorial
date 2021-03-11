@@ -5,9 +5,9 @@ import { firestore } from '../firebase';
 
 
 const Post = ({ title, content, user, createdAt, stars, comments, id }) => {
-  const postRef = firestore.doc(`posts/${id}`);             // reference to current post
-  const remove = () => { postRef.delete(); }
-  const star = () => postRef.update({ stars: stars+1 })
+  const postRef = firestore.doc(`posts/${id}`);                     // reference to current post
+  const remove = () => postRef.delete();                            // remove current post
+  const star   = () => postRef.update({ stars: stars+1 });          // star current post
 
   return (
     <article className="Post">

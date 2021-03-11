@@ -15,8 +15,8 @@ class AddPost extends Component {
 
     const { title, content } = this.state;
     const { uid, displayName, email, photoURL } = auth.currentUser || {}; 
-      // auth.currentUser gives you the current user if logged in
-      // else empty object
+    // If logged in, auth.currentUser gives you the current user
+    // Else return an empty object
 
 
     const post = {

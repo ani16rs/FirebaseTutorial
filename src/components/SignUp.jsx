@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
+import { auth, createUserProfileDocument } from '../firebase';
+
 
 class SignUp extends Component {
   state = { displayName: '', email: '', password: '' };
 
   handleChange = event => {
-    const { name, value } = event.target;
-
+    const { name, value } = event.target; 
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+
+    const { email, password, displayName } = this.state;
+  
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      // Create new user, signs in, returns a Promise of userCredentials.
+      // Notice that we only used an email and a password, but not a 'displayName'... To fix that, 
+      
+      // NOT THIS: user.updateProfile({displayName}) - you'll have to refresh the page to get the name to show up.
+      // If the user exist, and has some data stored in their doc, then fetch that.
+      // New user created, but only with an email & password; now add the 'additional data' like display name.
+      createUserProfileDocument(user, { displayName });
+    } 
+    catch (error) {
+      console.log('oops');
+      console.log(error);
+    }
 
     this.setState({ displayName: '', email: '', password: '' });
   };
