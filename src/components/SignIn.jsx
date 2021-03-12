@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signInWithGoogle } from '../firebase';
+// import { createUserProfileDocument, signInWithGoogle } from '../firebase';
 
 class SignIn extends Component {
   state = { email: '', password: '' };
@@ -10,8 +11,11 @@ class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    console.log('shit');
+    // const { user } = await auth.createUserWithEmailAndPassword(email, password);
+    // createUserProfileDocument(user, { displayName });
 
     this.setState({ email: '', password: '' });
   };
